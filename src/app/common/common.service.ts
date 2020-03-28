@@ -15,23 +15,23 @@ export class CommonService {
   createLogin(phone,password,department,details,lat,log){
     console.log(lat,log);
     
-    return this.http.post('http://localhost:8080/api/login',{phone,password,department,details,lat,log})
+    return this.http.post('https://foodapp28.herokuapp.com/api/login',{phone,password,department,details,lat,log})
   } 
 
   createOrder(itemName,stockNo,shopName,qundity,phone){
-    return this.http.post('http://localhost:8080/api/order',{itemName,stockNo,shopName,qundity,phone})
+    return this.http.post('https://foodapp28.herokuapp.com/api/order',{itemName,stockNo,shopName,qundity,phone})
   } 
   
   getDetailsLogin(phone){
-    return this.http.get('http://localhost:8080/api/login',{params:{phone}})
+    return this.http.get('https://foodapp28.herokuapp.com/api/login',{params:{phone}})
   }
   // getDetailsLogin2(){
   //   return this.http.get('http://localhost:8080/api/login')
   // }
   getDetailsOrder(){
-    return this.http.get('http://localhost:8080/api/order')
+    return this.http.get('https://foodapp28.herokuapp.com/api/order')
   }
    getDetailsStock(){
-    return this.http.get('http://localhost:8080/api/stock')
+    return this.http.get('https://foodapp28.herokuapp.com/api/stock')
   }
 }
