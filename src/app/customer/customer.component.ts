@@ -127,5 +127,6 @@ export class CustomerComponent implements OnInit {
     }
     this.cart = [];
     this.sum =0;
+    alert("Your order Placed Sucessfully");
   }
 }
