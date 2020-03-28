@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   email : string="";
   details : string="";
   location : string ="";
+  lat : Number = 0
+  log : Number = 0 
 
   constructor(
     public common : CommonService,
@@ -30,6 +32,8 @@ export class LoginComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => { 
       console.log("Got position", position.coords);
       this.location = position.coords.latitude +"&"+ position.coords.longitude;
+      this.lat = position.coords.latitude;
+      this.log = position.coords.longitude
       console.log("Got location", this.location);
     });
     // end of taking location
@@ -48,9 +52,12 @@ export class LoginComponent implements OnInit {
       {
         console.log("login successfull");
         if(this.res.department == 0)
-      {this.router.navigate(['farmer'],{ queryParams: { phone: this.phone} });}
+      {this.router.navigate(['customer'],{ queryParams: { phone: this.phone} });}
       else if(this.res.department == 1){
-        this.router.navigate(['consumer'],{ queryParams: { phone: this.phone} });
+        this.router.navigate(['shop'],{ queryParams: { phone: this.phone} });
+      }
+      else if(this.res.department == 2){
+        this.router.navigate(['delevery'],{ queryParams: { phone: this.phone} });
       }
       }
       else{
@@ -76,12 +83,15 @@ export class LoginComponent implements OnInit {
     this.details = this.username+'&'+this.email+'&'+this.address+'&'+this.sphone+'&'+this.location;
     console.log("details",this.details);
 
-    this.common.createLogin(this.phone,this.password,this.department,this.details).subscribe(result=>{
+    this.common.createLogin(this.phone,this.password,this.department,this.details,this.lat,this.log).subscribe(result=>{
       console.log("login is",result);
       if(this.department == 0)
-      {this.router.navigate(['farmer'],{ queryParams: { phone: this.phone} });}
+      {this.router.navigate(['customer'],{ queryParams: { phone: this.phone} });}
       else if(this.department == 1){
-        this.router.navigate(['consumer'],{ queryParams: { phone: this.phone} });
+        this.router.navigate(['shop'],{ queryParams: { phone: this.phone} });
+      }
+      else if(this.department == 2){
+        this.router.navigate(['delevery'],{ queryParams: { phone: this.phone} });
       }
       
     });

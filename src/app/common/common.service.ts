@@ -12,20 +12,24 @@ export class CommonService {
     
 
    }
-  createLogin(phone,password,department,details){
-    return this.http.post('http://localhost:8080/api/login',{phone,password,department,details})
+  createLogin(phone,password,department,details,lat,log){
+    console.log(lat,log);
+    
+    return this.http.post('http://localhost:8080/api/login',{phone,password,department,details,lat,log})
   } 
 
-  createOrder(orederNo,stockNo,shopNo,qundity,phone){
-    return this.http.post('http://localhost:8080/api/order',{orederNo,stockNo,shopNo,qundity,phone})
+  createOrder(itemName,stockNo,shopName,qundity,phone){
+    return this.http.post('http://localhost:8080/api/order',{itemName,stockNo,shopName,qundity,phone})
   } 
   
   getDetailsLogin(phone){
     return this.http.get('http://localhost:8080/api/login',{params:{phone}})
   }
-
+  // getDetailsLogin2(){
+  //   return this.http.get('http://localhost:8080/api/login')
+  // }
   getDetailsOrder(){
-    return this.http.get('http://localhost:8080/api/login')
+    return this.http.get('http://localhost:8080/api/order')
   }
    getDetailsStock(){
     return this.http.get('http://localhost:8080/api/stock')

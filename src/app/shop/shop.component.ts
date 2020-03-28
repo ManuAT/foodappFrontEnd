@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  list : any ;
+
+  constructor(
+    public common : CommonService,
+    private router : Router,
+  ) { }
 
   ngOnInit() {
+    this.common.getDetailsOrder().subscribe(result=>{
+      console.log("oder details",result);
+      this.list = result;
+    })
   }
 
 }
