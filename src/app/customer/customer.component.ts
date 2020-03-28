@@ -16,7 +16,7 @@ export class CustomerComponent implements OnInit {
   search : String ="";
   list : any;
   cart : any  =[];
-  sum : Number = 0;
+  sum : number = 0;
   constructor(
     public common : CommonService,
     private router : Router,
@@ -128,5 +128,11 @@ export class CustomerComponent implements OnInit {
     this.cart = [];
     this.sum =0;
     alert("Your order Placed Sucessfully");
+  }
+  removeFn(item,cost){
+    console.log("intex",item);
+    this.sum = this.sum - cost;
+    // this.cart.remove(item)
+    this.cart.splice(item, 1);
   }
 }
