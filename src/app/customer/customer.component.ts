@@ -30,7 +30,7 @@ export class CustomerComponent implements OnInit {
       res = result;
       for(var i=0;i<res.length;i++)
       {
-        if(res[i].department == 0){
+        if(res[i].department == 1){
           
           this.lat.push(res[i].lat);
           this.log.push(res[i].log);
@@ -50,9 +50,9 @@ export class CustomerComponent implements OnInit {
 
                 var map = new Microsoft.Maps.Map(document.getElementById("myMap"), {
                 disableZooming: false,
-                zoom : 6
+                zoom : 12
                 });
-                var center = map.getCenter();
+                var center = map.getCenter(9.9770008,76.2473529);
     
                 dataLayer = new Microsoft.Maps.EntityCollection();
                 map.entities.push(dataLayer);

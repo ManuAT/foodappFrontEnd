@@ -28,7 +28,7 @@ export class DeleveryComponent implements OnInit {
         setTimeout(() => {
           var map = new Microsoft.Maps.Map(document.getElementById("myMap"), {
             disableZooming: false,
-            zoom :12,
+            zoom :11,
             center: new Microsoft.Maps.Location(
               
               // this.latitude[i],
@@ -53,7 +53,7 @@ export class DeleveryComponent implements OnInit {
             icon: 'https://docs.microsoft.com/en-us/bingmaps/v8-web-control/media/bmv8-poi-custom.png',
             anchor: new Microsoft.Maps.Point(12, 39)
           });
-          // pin1.Title = this.location.title;
+          pin1.Title = "Coustomer";
           // pin1.Description = this.location.subTitle;
           Microsoft.Maps.Events.addHandler(pin1, 'mouseover', displayInfobox);
           Microsoft.Maps.Events.addHandler(pin1, 'mouseout', closeInfobox);
